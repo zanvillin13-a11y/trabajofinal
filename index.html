@@ -1,0 +1,390 @@
+<!-- Documento HTML5 de la tienda AURAL en español. -->
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Metadatos, título y recursos globales de la página. -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Descubre AURAL: audífonos y audio premium para escuchar cada detalle."
+    />
+    <meta name="theme-color" content="#111110" />
+    <title>AURAL — Escucha lo que importa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- .announcement muestra la promoción y enlaza al catálogo. -->
+    <div class="announcement">
+      <p>Envío gratis en compras mayores a S/ 2,500</p>
+      <a href="#productos">Descubre la colección <span aria-hidden="true">↗</span></a>
+    </div>
+
+    <!-- .site-header organiza marca, menú adaptable, navegación y bolsa. -->
+    <header class="site-header">
+      <!-- .brand enlaza al inicio; el símbolo indica marca registrada. -->
+      <a class="brand" href="#" aria-label="AURAL, inicio">
+        <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true">
+          <circle cx="18" cy="18" r="16.5" fill="none" stroke="currentColor" stroke-width="1.2" />
+          <path d="M8 20.5c3.2 0 3.2-5 6.4-5s3.2 9 6.4 9 3.2-11 6.4-11" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+        </svg>
+        <span class="brand-name">AURAL</span><span class="brand-registered">®</span>
+      </a>
+      <!-- .menu-toggle controla el menú móvil; aria-expanded refleja su estado. -->
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+      <!-- .main-nav contiene enlaces a las secciones principales. -->
+      <nav class="main-nav" aria-label="Navegación principal">
+        <div class="products-nav-item">
+          <button class="products-nav-toggle" type="button" aria-expanded="false" aria-controls="products-nav-options">
+            Productos
+          </button>
+          <div class="products-nav-options" id="products-nav-options" hidden>
+            <button type="button" data-product-category="headphones">Audífonos</button>
+            <button type="button" data-product-category="microphones">Micrófonos</button>
+            <button type="button" data-product-category="speakers">Parlantes</button>
+            <button type="button" data-product-category="professional">Audio profesional y accesorios</button>
+          </div>
+        </div>
+        <a href="#experiencia">Nuestra filosofía</a>
+        <a href="#noticias">Noticias</a>
+        <a href="#ubicaciones">Ubicaciones</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <button class="cart-link" type="button" aria-label="Abrir bolsa de compra" aria-controls="cart-drawer" aria-expanded="false">
+        <span class="cart-label">Bolsa</span>
+        <span class="cart-count" aria-live="polite">0</span>
+      </button>
+    </header>
+    <button class="cart-overlay" type="button" aria-label="Cerrar bolsa" hidden></button>
+    <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-hidden="true" hidden>
+      <header class="cart-drawer-header">
+        <div>
+          <p class="cart-drawer-kicker">TU SELECCIÓN</p>
+          <h2 id="cart-title">Bolsa <span class="cart-drawer-count">(0)</span></h2>
+        </div>
+        <button class="cart-close" type="button" aria-label="Cerrar bolsa">×</button>
+      </header>
+      <div class="cart-items" aria-live="polite"></div>
+      <div class="cart-drawer-footer">
+        <div class="cart-total"><span>Total estimado</span><strong class="cart-total-price">S/ 0 (US$ 0)</strong></div>
+        <button class="cart-checkout" type="button">Continuar compra</button>
+        <p class="cart-checkout-message" aria-live="polite">Precios ilustrativos. El cambio referencial es US$ 1 ≈ S/ 3.75.</p>
+      </div>
+    </aside>
+    <dialog class="product-dialog" aria-labelledby="product-dialog-title">
+      <div class="product-dialog-layout">
+        <div class="product-dialog-visual">
+          <img class="product-dialog-image" alt="" />
+        </div>
+        <div class="product-dialog-content">
+          <button class="product-dialog-close" type="button" aria-label="Cerrar detalles del producto">×</button>
+          <p class="product-dialog-category"></p>
+          <h2 id="product-dialog-title"></h2>
+          <p class="product-dialog-description"></p>
+          <section class="product-dialog-section">
+            <h3>Uso recomendado</h3>
+            <p class="product-dialog-use"></p>
+          </section>
+          <section class="product-dialog-section">
+            <h3>Características</h3>
+            <ul class="product-dialog-features"></ul>
+          </section>
+          <div class="product-dialog-purchase">
+            <strong class="product-dialog-price"></strong>
+            <button class="button button-dark product-dialog-add" type="button">Añadir a la bolsa <span aria-hidden="true">+</span></button>
+          </div>
+          <p class="product-dialog-note">Producto y precio de muestra.</p>
+        </div>
+      </div>
+    </dialog>
+    <dialog class="philosophy-dialog" aria-labelledby="philosophy-dialog-title">
+      <button class="philosophy-dialog-close" type="button" aria-label="Cerrar filosofía">×</button>
+      <p class="eyebrow"><span class="eyebrow-line"></span> Nuestra filosofía</p>
+      <h2 id="philosophy-dialog-title">Escuchar también es <em>sentir.</em></h2>
+      <p class="philosophy-dialog-intro">En AURAL creemos que el sonido puede transformar un momento cotidiano en una experiencia que se queda contigo. Diseñamos para acercarte a la música, a las personas y a tus propias ideas.</p>
+      <div class="philosophy-values">
+        <article>
+          <span>01</span>
+          <h3>Diseño con intención</h3>
+          <p>Creamos objetos cómodos y cuidados, pensados para acompañarte y formar parte de tu día.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Escucha auténtica</h3>
+          <p>Buscamos un sonido claro y equilibrado que respete cada detalle y cada emoción.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Conexión en cada nota</h3>
+          <p>La música nos acerca: a nuestros recuerdos, a otras personas y a nuevas formas de ver el mundo.</p>
+        </article>
+      </div>
+      <p class="philosophy-signature">AURAL — Hecho para escuchar.</p>
+    </dialog>
+
+    <!-- Contenido principal de la página. -->
+    <main>
+      <!-- Presentación principal con propuesta, acciones e imagen destacada. -->
+      <section class="hero" aria-labelledby="hero-title">
+        <!-- .hero-copy agrupa textos; .hero-description presenta la propuesta. -->
+        <div class="hero-copy">
+          <!-- .eyebrow es un rótulo de sección; .eyebrow-line añade su acento visual. -->
+          <p class="eyebrow"><span class="eyebrow-line"></span> Sonido, sin distracciones</p>
+          <h1 id="hero-title">Escucha lo<br />que <em>importa.</em></h1>
+          <p class="hero-description">
+            Diseñados para perderte en la música. Hechos para acompañarte a todas partes.
+          </p>
+          <!-- .hero-actions agrupa enlaces; .button define botones y .button-light su variante clara. -->
+          <div class="hero-actions">
+            <a class="button button-light" href="#productos">Explorar colección <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="#experiencia">Conoce AURAL <span aria-hidden="true">→</span></a>
+          </div>
+          <!-- .text-link da estilo a enlaces secundarios; .hero-note resalta el mensaje y .note-mark su ícono. -->
+          <div class="hero-note">
+            <span class="note-mark" aria-hidden="true">✳</span>
+            <p>Escucha con intención.<br /><strong>Vive cada frecuencia.</strong></p>
+          </div>
+        </div>
+        <!-- .hero-art compone la imagen; .hero-orbit con orbit-one/orbit-two dibuja círculos decorativos. -->
+        <div class="hero-art" aria-label="Audífonos premium sobre fondo cálido" role="img">
+          <!-- Órbitas decorativas que rodean la imagen. -->
+          <div class="hero-orbit orbit-one"></div>
+          <div class="hero-orbit orbit-two"></div>
+          <!-- .hero-image-wrap enmarca .hero-image, cuya descripción alternativa está en alt. -->
+          <div class="hero-image-wrap">
+            <img
+              class="hero-image"
+              src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=85"
+              alt="Audífonos inalámbricos de diadema"
+            />
+          </div>
+          <!-- .hero-art-label identifica la imagen y .hero-sticker presenta el sello de diseño. -->
+          <div class="hero-art-label"><span>01 / 03</span><span>Estudio de sonido AURAL</span></div>
+          <div class="hero-sticker"><span>Diseño</span><strong>para<br />sentir</strong><span>el sonido</span></div>
+        </div>
+        <!-- .hero-bottom agrupa el dato de ubicación y la indicación de desplazamiento. -->
+        <div class="hero-bottom">
+          <span>25° 41' 02.0" N — HECHO PARA ESCUCHAR</span>
+          <span>Desliza para descubrir <span aria-hidden="true">↓</span></span>
+        </div>
+      </section>
+
+      <!-- .ticker presenta frases en movimiento; .ticker-track agrupa sus elementos repetidos. -->
+      <section class="ticker" aria-label="Características AURAL">
+        <!-- Elementos repetidos para formar la cinta visual. -->
+        <div class="ticker-track">
+          <span>Hecho para escuchar</span><i>✳</i><span>Precisión en cada nota</span><i>✳</i>
+          <span>Libertad inalámbrica</span><i>✳</i><span>Hecho para escuchar</span><i>✳</i>
+          <span>Precisión en cada nota</span><i>✳</i><span>Libertad inalámbrica</span><i>✳</i>
+        </div>
+      </section>
+
+      <!-- .products identifica el catálogo y .section-shell alinea su ancho con otras secciones. -->
+      <section class="products section-shell" id="productos" aria-labelledby="products-title">
+        <!-- .section-heading organiza título y enlace; .dark-link aplica la variante oscura de .text-link. -->
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> Encuentra tu sonido</p>
+            <h2 id="products-title">Productos<br />para <em>escuchar.</em></h2>
+          </div>
+          <p class="catalog-note">Precios de muestra en soles; el equivalente en dólares es referencial (US$ 1 ≈ S/ 3.75).</p>
+        </div>
+
+        <div class="product-filters" role="group" aria-label="Filtrar productos"></div>
+        <p class="product-results" aria-live="polite"></p>
+        <div class="product-catalog"></div>
+      </section>
+
+      <!-- .manifesto presenta la filosofía de marca en formato editorial. -->
+      <section class="manifesto" id="experiencia">
+        <!-- .manifesto-image contiene la foto y .image-caption su pie. -->
+        <div class="manifesto-image">
+          <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1400&q=85" alt="Artista cantando en un escenario" loading="lazy" />
+          <span class="image-caption">ENCUENTRA TU PROPIA FRECUENCIA — 2025</span>
+        </div>
+        <!-- .manifesto-copy agrupa mensaje y enlace; .button-dark es la variante oscura; .manifesto-number numera la pieza. -->
+        <div class="manifesto-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> Más que escuchar</p>
+          <h2>Un mundo entero<br />cabe en <em>una nota.</em></h2>
+          <p>
+            Creemos que el buen sonido no solo se oye: te mueve, te conecta y convierte cualquier momento en algo tuyo. Por eso cuidamos cada detalle, desde la primera escucha hasta el diseño que te acompaña.
+          </p>
+          <button class="button button-dark philosophy-open" type="button">Descubre nuestra filosofía <span aria-hidden="true">↗</span></button>
+          <span class="manifesto-number">A/01</span>
+        </div>
+      </section>
+
+      <section class="news section-shell" id="noticias" aria-labelledby="news-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> Lo que pasa en AURAL</p>
+            <h2 id="news-title">Noticias <em>de la marca.</em></h2>
+          </div>
+          <p class="news-intro">Novedades, ideas y novedades de producto para seguir el universo AURAL.</p>
+        </div>
+        <div class="news-grid">
+          <article class="news-card">
+            <p class="news-category">PRODUCTO <span>·</span> AURAL UNO</p>
+            <h3>El sonido que se adapta a tu día</h3>
+            <p>AURAL Uno combina libertad inalámbrica y cancelación de ruido para que te concentres en cada escucha.</p>
+            <a href="#productos">Conoce AURAL Uno <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="news-card">
+            <p class="news-category">NOVEDAD <span>·</span> AURAL MOVIMIENTO</p>
+            <h3>Tu música, siempre en movimiento</h3>
+            <p>Compacto y fácil de llevar: AURAL Movimiento está pensado para acompañarte dondequiera que vayas.</p>
+            <a href="#productos">Descubre AURAL Movimiento <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="news-card">
+            <p class="news-category">ESENCIA AURAL <span>·</span> NUESTRA FILOSOFÍA</p>
+            <h3>Más que escuchar, sentir</h3>
+            <p>Creemos en un sonido que te mueve, te conecta y convierte cualquier momento en algo tuyo.</p>
+            <a href="#experiencia">Conoce nuestra filosofía <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+      </section>
+
+      <section class="locations section-shell" id="ubicaciones" aria-labelledby="locations-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> Explora la ciudad</p>
+            <h2 id="locations-title">AURAL en <em>Lima.</em></h2>
+          </div>
+          <p class="locations-intro">Explora cinco zonas de Lima y consulta su ubicación general en el mapa.</p>
+        </div>
+        <div class="location-grid">
+          <article class="location-card">
+            <span class="location-number">01</span>
+            <h3>Miraflores</h3>
+            <p>Lima, Perú</p>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Miraflores%2C+Lima%2C+Per%C3%BA" target="_blank" rel="noopener noreferrer">Ver en el mapa <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="location-card">
+            <span class="location-number">02</span>
+            <h3>San Isidro</h3>
+            <p>Lima, Perú</p>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=San+Isidro%2C+Lima%2C+Per%C3%BA" target="_blank" rel="noopener noreferrer">Ver en el mapa <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="location-card">
+            <span class="location-number">03</span>
+            <h3>Barranco</h3>
+            <p>Lima, Perú</p>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Barranco%2C+Lima%2C+Per%C3%BA" target="_blank" rel="noopener noreferrer">Ver en el mapa <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="location-card">
+            <span class="location-number">04</span>
+            <h3>Santiago de Surco</h3>
+            <p>Lima, Perú</p>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Santiago+de+Surco%2C+Lima%2C+Per%C3%BA" target="_blank" rel="noopener noreferrer">Ver en el mapa <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="location-card">
+            <span class="location-number">05</span>
+            <h3>Centro de Lima</h3>
+            <p>Lima, Perú</p>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Centro+de+Lima%2C+Per%C3%BA" target="_blank" rel="noopener noreferrer">Ver en el mapa <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact section-shell" id="contacto" aria-labelledby="contact-title">
+        <div class="contact-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> Estamos para ayudarte</p>
+          <h2 id="contact-title">Hablemos de <em>sonido.</em></h2>
+          <p>Déjanos tus datos y cuéntanos cómo podemos ayudarte. También puedes elegir la zona de Lima que te interesa.</p>
+        </div>
+        <form class="contact-form">
+          <div class="contact-fields">
+            <div class="contact-field">
+              <label for="contact-name">Nombre</label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="100" required />
+            </div>
+            <div class="contact-field">
+              <label for="contact-email">Correo electrónico</label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required />
+            </div>
+            <div class="contact-field">
+              <label for="contact-phone">Teléfono <span>(opcional)</span></label>
+              <input id="contact-phone" name="phone" type="tel" autocomplete="tel" maxlength="30" />
+            </div>
+            <div class="contact-field">
+              <label for="contact-location">Zona de interés</label>
+              <select id="contact-location" name="location" required>
+                <option value="" selected disabled>Selecciona una ubicación</option>
+                <option>Miraflores</option>
+                <option>San Isidro</option>
+                <option>Barranco</option>
+                <option>Santiago de Surco</option>
+                <option>Centro de Lima</option>
+              </select>
+            </div>
+            <div class="contact-field contact-field-full">
+              <label for="contact-message">¿Cómo podemos ayudarte?</label>
+              <textarea id="contact-message" name="message" rows="4" maxlength="1000" required></textarea>
+            </div>
+          </div>
+          <button class="button button-dark contact-submit" type="submit">Enviar consulta <span aria-hidden="true">↗</span></button>
+          <p class="contact-message" aria-live="polite">Completa el formulario y te ayudaremos con tu consulta. Este sitio de demostración aún no envía mensajes.</p>
+        </form>
+      </section>
+
+    </main>
+
+    <!-- .site-footer cierra la página con marca, derechos y enlaces a redes sociales. -->
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#" aria-label="AURAL, inicio">
+        <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true">
+          <circle cx="18" cy="18" r="16.5" fill="none" stroke="currentColor" stroke-width="1.2" />
+          <path d="M8 20.5c3.2 0 3.2-5 6.4-5s3.2 9 6.4 9 3.2-11 6.4-11" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+        </svg>
+        <span class="brand-name">AURAL</span><span class="brand-registered">®</span>
+      </a>
+      <!-- El id year permite que JavaScript inserte el año vigente. -->
+      <p>Hecho para escuchar. © <span id="year"></span> AURAL Audio.</p>
+      <nav class="footer-links" aria-label="Redes sociales">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="https://www.whatsapp.com/" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://x.com/" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer">TikTok</a>
+      </nav>
+    </footer>
+    <section class="assistant" aria-label="Asistente AURAL">
+      <div class="assistant-panel" id="assistant-panel" aria-labelledby="assistant-title" hidden>
+        <header class="assistant-header">
+          <div>
+            <p class="assistant-kicker">AURAL · ASISTENTE</p>
+            <h2 id="assistant-title">¿En qué te ayudo?</h2>
+          </div>
+          <button class="assistant-close" type="button" aria-label="Cerrar asistente">×</button>
+        </header>
+        <div class="assistant-progress" aria-live="polite" hidden></div>
+        <div class="assistant-messages" role="log" aria-live="polite" aria-relevant="additions"></div>
+        <div class="assistant-shortcuts">
+          <button type="button" data-assistant-prompt="¿Qué audífonos tienen?">Ver audífonos</button>
+          <button type="button" data-assistant-prompt="Iniciar evaluación">Evaluación · 30 preguntas</button>
+        </div>
+        <form class="assistant-form">
+          <label class="visually-hidden" for="assistant-input">Escribe tu pregunta</label>
+          <input id="assistant-input" name="message" type="text" placeholder="Escribe tu pregunta..." autocomplete="off" maxlength="300" required />
+          <button type="submit" aria-label="Enviar mensaje">↑</button>
+        </form>
+      </div>
+      <button class="assistant-toggle" type="button" aria-controls="assistant-panel" aria-expanded="false">
+        <span aria-hidden="true">✳</span> <span class="assistant-toggle-label">Habla con AURAL</span>
+      </button>
+    </section>
+    <!-- .toast reserva el área de mensajes temporales y la anuncia a lectores de pantalla. -->
+    <div class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
